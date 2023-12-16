@@ -59,3 +59,10 @@ async function addContact(name, email, phone) {
   fs.writeFile(contactsPath, JSON.stringify(allContacts));
   return newContact;
 }
+
+module.exports = {
+  listContacts,
+  getContactById,
+  removeContact,
+  addContact,
+};
