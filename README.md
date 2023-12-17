@@ -11,12 +11,16 @@ Necessary commands to run this application:
 
 ### List Contacts
 - `node index.js --action list` - display your contact list
+  ![List Contacts](./images/contactList.PNG)
 
 ### Get Contact by ID
 - `node index.js --action get --id (enter ID)` - get contact by ID
+  ![Get Contact](./images/get.PNG)
 
 ### Add a New Contact
 - `node index.js --action add --name (enter name) --(enter email) --phone (enter phone number)` - add new contact (it will add to contacts.js: id, name, email, phone)
+  ![Add Contact](./images/add.PNG)
 
 ### Remove a Contact
 - `node index.js --action remove --id (enter ID)` - remove contact by ID
+  ![Remove Contact](./images/delete.PNG)
