@@ -1,10 +1,9 @@
-const fs = require("fs").promises;
-const { nanoid } = require("nanoid");
-const path = require("path");
+import { promises as fs } from "fs";
+import path from "path";
+import { nanoid } from "nanoid";
+import colors from "colors";
 
-require("colors");
-
-const contactsPath = path.join(__dirname, "db/contacts.json");
+const contactsPath = path.join(process.cwd(), "db", "contacts.json");
 
 // wyświetlenie listy kontaktów
 async function listContacts() {
@@ -60,9 +59,4 @@ async function addContact(name, email, phone) {
   return newContact;
 }
 
-module.exports = {
-  listContacts,
-  getContactById,
-  removeContact,
-  addContact,
-};
+export { listContacts, getContactById, removeContact, addContact };

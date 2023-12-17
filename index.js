@@ -1,6 +1,11 @@
-const contacts = require("./contacts");
+import {
+  listContacts,
+  getContactById,
+  addContact,
+  removeContact,
+} from "./contacts.js";
 
-const { Command } = require("commander");
+import { Command } from "commander";
 const program = new Command();
 program
   .option("-a, --action <type>", "choose action")
@@ -17,7 +22,7 @@ function invokeAction({ action, id, name, email, phone }) {
   switch (action) {
     case "list":
       try {
-        const allContacts = contacts.listContacts();
+        const allContacts = listContacts();
         console.log("\nContact list".blue);
         console.table(allContacts);
       } catch (error) {
@@ -27,7 +32,7 @@ function invokeAction({ action, id, name, email, phone }) {
 
     case "get":
       try {
-        const contact = contacts.getContactById();
+        const contact = getContactById();
         console.log(`\nContact: ID ${id}`.blue);
         console.table(contact);
       } catch (error) {
@@ -37,7 +42,7 @@ function invokeAction({ action, id, name, email, phone }) {
 
     case "add":
       try {
-        const newContact = contacts.addContact(name, email, phone);
+        const newContact = addContact(name, email, phone);
         console.log(`\nNew contact added: ${name}`.blue);
         console.table(newContact);
       } catch (error) {
@@ -47,7 +52,7 @@ function invokeAction({ action, id, name, email, phone }) {
 
     case "remove":
       try {
-        const newContact = contacts.removeContact(id);
+        const newContact = removeContact(id);
         console.log(`\nContact ${name} has been deleted`.blue);
         console.table(newContact);
       } catch (error) {
