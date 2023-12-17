@@ -18,11 +18,12 @@ program.parse(process.argv);
 
 const argv = program.opts();
 
-function invokeAction({ action, id, name, email, phone }) {
+async function invokeAction({ action, id, name, email, phone }) {
   switch (action) {
     case "list":
       try {
-        const allContacts = listContacts();
+        const allContacts = await listContacts();
+        console.log(allContacts);
         console.log("\nContact list".blue);
         console.table(allContacts);
       } catch (error) {
@@ -32,7 +33,7 @@ function invokeAction({ action, id, name, email, phone }) {
 
     case "get":
       try {
-        const contact = getContactById();
+        const contact = await getContactById(id);
         console.log(`\nContact: ID ${id}`.blue);
         console.table(contact);
       } catch (error) {
@@ -42,7 +43,7 @@ function invokeAction({ action, id, name, email, phone }) {
 
     case "add":
       try {
-        const newContact = addContact(name, email, phone);
+        const newContact = await addContact(name, email, phone);
         console.log(`\nNew contact added: ${name}`.blue);
         console.table(newContact);
       } catch (error) {
@@ -52,9 +53,8 @@ function invokeAction({ action, id, name, email, phone }) {
 
     case "remove":
       try {
-        const newContact = removeContact(id);
-        console.log(`\nContact ${name} has been deleted`.blue);
-        console.table(newContact);
+        const newContact = await removeContact(id);
+        console.log(`\nContact has been deleted`.blue);
       } catch (error) {
         console.error(error);
       }

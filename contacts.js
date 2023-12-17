@@ -7,7 +7,7 @@ const contactsPath = path.join(process.cwd(), "db", "contacts.json");
 
 // wyświetlenie listy kontaktów
 async function listContacts() {
-  const contacts = await fs.readFile(contactsPath, "utf-8");
+  const contacts = await fs.readFile(contactsPath, { encoding: "utf-8" });
 
   if (!contacts) {
     throw new Error("There are no contacts".red);
@@ -20,7 +20,6 @@ async function listContacts() {
 async function getContactById(contactId) {
   const allContacts = await listContacts();
   const contact = allContacts.find((contact) => contact.id === contactId);
-
   if (!contact) {
     throw new Error(`There is no contact with id ${contactId}`.red);
   }
