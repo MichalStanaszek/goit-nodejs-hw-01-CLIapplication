@@ -18,7 +18,7 @@ Necessary commands to run this application:
   ![Get Contact](./images/get.PNG)
 
 ### Add a New Contact
-- `node index.js --action add --name (enter name) --(enter email) --phone (enter phone number)` - add new contact (it will add to contacts.js: id, name, email, phone)
+- `node index.js --action add --name (enter name) --email (enter email) --phone (enter phone number)` - add new contact (it will add to contacts.js: id, name, email, phone)
   ![Add Contact](./images/add.PNG)
 
 ### Remove a Contact
